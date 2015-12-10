@@ -11,9 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20151210011232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listings", primary_key: "od_id", force: :cascade do |t|
+    t.string   "street"
+    t.string   "status"
+    t.integer  "price"
+    t.integer  "bathrooms"
+    t.integer  "bedrooms"
+    t.integer  "sq_ft"
+    t.decimal  "lat",        precision: 23, scale: 20
+    t.decimal  "lng",        precision: 23, scale: 20
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "listings", ["bathrooms"], name: "index_listings_on_bathrooms", using: :btree
+  add_index "listings", ["bedrooms"], name: "index_listings_on_bedrooms", using: :btree
+  add_index "listings", ["lat"], name: "index_listings_on_lat", using: :btree
+  add_index "listings", ["lng"], name: "index_listings_on_lng", using: :btree
+  add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
+  add_index "listings", ["status"], name: "index_listings_on_status", using: :btree
 
 end

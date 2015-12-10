@@ -22,5 +22,8 @@ module OdListingsRuby
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # render decimals with no quotes in json
+    config.active_support.encode_big_decimal_as_string = false
   end
 end
