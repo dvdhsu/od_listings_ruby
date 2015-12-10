@@ -2,10 +2,11 @@ class ListingsController < ApplicationController
   include ListingHelper
 
   before_action :set_listing, only: [:show]
+  after_action only: [:index] { set_pagination_header(:listings) }
 
   def index
     query = to_query params
-    @listings = Listing.where(query)
+    @listings = Listing.where(query).page params["page"]
     render json: {
       type: "FeatureCollection",
       features: ActiveModel::ArraySerializer.new(@listings, each_serializer: ListingSerializer),

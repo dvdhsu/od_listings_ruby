@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'geocoder'
 gem 'activesupport-json_encoder'
 gem 'active_model_serializers'
+gem 'kaminari'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
