@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'figaro'
 gem 'geocoder'
 gem 'activesupport-json_encoder'
+gem 'active_model_serializers'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
