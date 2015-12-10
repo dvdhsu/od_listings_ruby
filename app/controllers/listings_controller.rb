@@ -1,8 +1,11 @@
 class ListingsController < ApplicationController
+  include ListingHelper
+
   before_action :set_listing, only: [:show]
 
   def index
-    @listings = Listing.all
+    query = to_query params
+    @listings = Listing.where(query)
     render json: {
       type: "FeatureCollection",
       features: ActiveModel::ArraySerializer.new(@listings, each_serializer: ListingSerializer),
